@@ -26,7 +26,16 @@ public class Listener {
       RegisterListener listener = method.getAnnotation(RegisterListener.class);
       if (listener == null) continue;
 
-      Listener.register(listener.type(), new Listener.CallableMethod(method, canvas));
+      Listener.register(listener.type(), new CallableMethod(method, canvas));
+    }
+  }
+
+  public static void unregisterClass(Object canvas) {
+    for (Method method : canvas.getClass().getDeclaredMethods()) {
+      RegisterListener listener = method.getAnnotation(RegisterListener.class);
+      if (listener == null) continue;
+
+      Listener.unregister(listener.type(), new CallableMethod(method, canvas));
     }
   }
 

@@ -39,8 +39,19 @@ public class Frame extends JFrame {
 
   public void addCanvas(Canvas canvas) {
     Listener.registerClass(canvas);
+    this.remove(canvas);
 
+    this.update();
+  }
+
+  public void removeCanvas(Canvas canvas) {
+    Listener.unregisterClass(canvas);
     this.add(canvas);
+
+    this.update();
+  }
+
+  private void update() {
     // makes the window the same size as its canvas's
     this.pack();
 
