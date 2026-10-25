@@ -1,6 +1,9 @@
 package com.scales.dev.window;
 
 import com.scales.dev.Main;
+import com.scales.dev.listeners.KeyListener;
+import com.scales.dev.listeners.Listener;
+import com.scales.dev.listeners.MouseListener;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -15,9 +18,16 @@ public class Frame extends JFrame {
     // otherwise it keeps running without a window, how crazy!
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+    // generally its easier for my stuff to only render for a specific size, sorry
+    this.setResizable(false);
+    this.registerListeners();
     this.setIconImage();
-
     this.setVisible(true);
+  }
+
+  private void registerListeners() {
+    this.addMouseListener(new MouseListener());
+    this.addKeyListener(new KeyListener());
   }
 
   private void setIconImage() {
@@ -35,7 +45,10 @@ public class Frame extends JFrame {
   }
 
   public void addCanvas(Canvas canvas) {
+    Listener.registerClass(canvas);
+
     this.add(canvas);
+    // makes the window the same size as its canvas's
     this.pack();
 
     // centers the window

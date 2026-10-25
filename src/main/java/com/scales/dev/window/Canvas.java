@@ -14,15 +14,11 @@ public class Canvas extends JPanel {
     this.setPreferredSize(new Dimension(500, 500));
   }
 
-  // this is called as soon as the canvas is created, we can call it ourselves whenever we need
   @Override
   public void paintComponent(Graphics g) {
-    // makes SURE we arent drawing twice at the same time
+    // makes SURE we aren't drawing twice at the same time
     Toolkit.getDefaultToolkit().sync();
     g.clearRect(0, 0, this.getWidth(), this.getHeight());
-    g.setColor(Color.RED);
-
-    int x = (int) ((System.currentTimeMillis()/5) % 450);
-    g.fillRect(x, 0, 50,50);
+    //super.paintComponent(g);
   }
 }
