@@ -1,16 +1,24 @@
 package com.scales.dev.listeners;
 
+import com.scales.dev.window.Frame;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class MouseListener extends MouseAdapter {
-  @Override
-  public void mousePressed(MouseEvent e) {
-    Listener.fire(Listener.Type.MOUSE_PRESS, e);
-  }
+public class MouseListener extends Listener {
+  public MouseListener(Frame frame) {
+    super(frame);
 
-  @Override
-  public void mouseReleased(MouseEvent e) {
-    Listener.fire(Listener.Type.MOUSE_RELEASE, e);
+    frame.addMouseListener(new MouseAdapter() {
+      @Override
+      public void mousePressed(MouseEvent e) {
+        Listener.fire(Listener.Type.MOUSE_PRESS, e);
+      }
+
+      @Override
+      public void mouseReleased(MouseEvent e) {
+        Listener.fire(Listener.Type.MOUSE_RELEASE, e);
+      }
+    });
   }
 }

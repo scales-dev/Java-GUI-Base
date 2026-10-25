@@ -6,7 +6,6 @@ import com.scales.dev.window.Canvas;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
 
 public class Example extends Canvas {
   @Override
@@ -21,8 +20,8 @@ public class Example extends Canvas {
     g.fillRect(x, y, 50, 50);
   }
 
-  @RegisterListener(type = Listener.Type.MOUSE_PRESS)
-  public void onMousePress(MouseEvent e) {
+  @RegisterListener(type = Listener.Type.TICK)
+  public void onTick() {
     this.repaint();
   }
 

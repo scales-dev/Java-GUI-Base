@@ -1,5 +1,7 @@
 package com.scales.dev.listeners;
 
+import com.scales.dev.window.Frame;
+
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,6 +10,15 @@ public class Listener {
   private static final HashMap<Type, ArrayList<CallableMethod>> LISTENERS = new HashMap<>();
 
   public record CallableMethod(Method method, Object instance) {
+  }
+
+  public Listener(Frame frame) {
+  }
+
+  public static void registerListeners(Frame frame) {
+    new KeyListener(frame);
+    new MouseListener(frame);
+    new TickListener(frame);
   }
 
   public static void registerClass(Object canvas) {
@@ -53,5 +64,7 @@ public class Listener {
 
     KEY_PRESS,
     KEY_RELEASE,
+
+    TICK
   }
 }
