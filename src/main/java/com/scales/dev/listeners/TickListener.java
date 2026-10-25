@@ -1,6 +1,6 @@
 package com.scales.dev.listeners;
 
-import com.scales.dev.window.Frame;
+import com.scales.dev.window.Canvas;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -8,8 +8,8 @@ import java.util.TimerTask;
 public class TickListener extends Listener {
   private static final Timer timer = new Timer();
 
-  public TickListener(Frame frame) {
-    super(frame);
+  public TickListener(Canvas canvas) {
+    super(canvas);
 
     timer.scheduleAtFixedRate(
       new TimerTask() {

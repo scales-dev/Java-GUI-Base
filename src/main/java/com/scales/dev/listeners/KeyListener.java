@@ -1,23 +1,23 @@
 package com.scales.dev.listeners;
 
-import com.scales.dev.window.Frame;
+import com.scales.dev.window.Canvas;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class KeyListener extends Listener {
-  public KeyListener(Frame frame) {
-    super(frame);
+  public KeyListener(Canvas canvas) {
+    super(canvas);
 
-    frame.addKeyListener(new KeyAdapter() {
+    canvas.addKeyListener(new KeyAdapter() {
       @Override
-      public void keyPressed(KeyEvent e) {
-        Listener.fire(Listener.Type.KEY_PRESS, e);
+      public void keyPressed(KeyEvent keyEvent) {
+        Listener.fire(Type.KEY_PRESS, keyEvent, true);
       }
 
       @Override
-      public void keyReleased(KeyEvent e) {
-        Listener.fire(Listener.Type.KEY_RELEASE, e);
+      public void keyReleased(KeyEvent keyEvent) {
+        Listener.fire(Type.KEY_PRESS, keyEvent, false);
       }
     });
   }

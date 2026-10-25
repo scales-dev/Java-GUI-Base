@@ -15,7 +15,6 @@ public class Frame extends JFrame {
 
     // otherwise it keeps running without a window, how crazy!
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    Listener.registerListeners(this);
 
     // generally its easier for my stuff to only render for a specific size, sorry
     this.setResizable(false);
@@ -39,23 +38,26 @@ public class Frame extends JFrame {
 
   public void addCanvas(Canvas canvas) {
     Listener.registerClass(canvas);
-    this.remove(canvas);
+    // index 0 is the top layer
+    this.add(canvas, 0);
+
+    // makes the window the same size as its canvas's
+    this.pack();
 
     this.update();
   }
 
   public void removeCanvas(Canvas canvas) {
     Listener.unregisterClass(canvas);
-    this.add(canvas);
+    this.remove(canvas);
 
     this.update();
   }
 
   private void update() {
-    // makes the window the same size as its canvas's
-    this.pack();
-
     // centers the window
     this.setLocationRelativeTo(null);
+
+    this.repaint();
   }
 }
