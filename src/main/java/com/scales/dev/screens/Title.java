@@ -4,7 +4,6 @@ import com.scales.dev.Main;
 import com.scales.dev.listeners.Listener;
 import com.scales.dev.listeners.RegisterListener;
 import com.scales.dev.window.Canvas;
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
@@ -31,8 +30,8 @@ public class Title extends Canvas {
   public boolean onKeyPress(KeyEvent e, boolean isPressed) {
     if (!isPressed) return false;
 
-    Main.FRAME.addCanvas(new Game());
-    Main.FRAME.removeCanvas(this);
+    this.getParentFrame().addCanvas(new Game());
+    this.getParentFrame().removeCanvas(this);
 
     return true;
   }

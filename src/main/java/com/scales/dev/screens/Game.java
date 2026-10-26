@@ -1,10 +1,8 @@
 package com.scales.dev.screens;
 
-import com.scales.dev.Main;
 import com.scales.dev.listeners.Listener;
 import com.scales.dev.listeners.RegisterListener;
 import com.scales.dev.window.Canvas;
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
@@ -72,7 +70,7 @@ public class Game extends Canvas {
   public boolean onKeyPress(KeyEvent e, boolean isPressed) {
     if (!isPressed || e.getKeyCode() != KeyEvent.VK_ESCAPE) return false;
 
-    Main.FRAME.addCanvas(new Pause());
+    this.getParentFrame().addCanvas(new Pause());
 
     return true;
   }

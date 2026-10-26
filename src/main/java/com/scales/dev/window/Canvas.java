@@ -1,16 +1,34 @@
 package com.scales.dev.window;
 
 import com.scales.dev.listeners.Listener;
-
-import javax.swing.*;
 import java.awt.*;
 import java.lang.reflect.Method;
 import java.util.LinkedHashMap;
+import javax.swing.*;
+import lombok.Getter;
 
 // ironically, we dont extend canvas, lol.
 // obscure stuff https://forums.oracle.com/ords/apexds/post/how-to-make-two-jpanel-overlapping-0596
 public class Canvas extends JLayeredPane {
   public final LinkedHashMap<Listener.Type, Method> LISTENERS = new LinkedHashMap<>();
+
+  @Getter private Frame parentFrame;
+
+  public void setParentFrame(Frame parentFrame) {
+    if (this.parentFrame != null) {
+      this.parentFrame.getCanvases().remove(this);
+    }
+
+    this.parentFrame = parentFrame;
+
+    if (this.parentFrame != null) {
+      this.parentFrame.getCanvases().add(this);
+    }
+  }
+
+  private boolean isOnTop() {
+    return parentFrame.getCanvases().getLast() == this;
+  }
 
   public Canvas() {
     super();
