@@ -21,6 +21,11 @@ public class Pause extends Canvas {
     return true;
   }
 
+  @RegisterListener(type = Listener.Type.MOUSE_DRAG)
+  public boolean onMouseDrag(MouseEvent e, boolean isPressed) {
+    return isPressed;
+  }
+
   @RegisterListener(type = Listener.Type.KEY_PRESS)
   public boolean onKeyPress(KeyEvent e, boolean isPressed) {
     if (!isPressed || e.getKeyCode() != KeyEvent.VK_ESCAPE) return true;

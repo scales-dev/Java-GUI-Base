@@ -62,9 +62,6 @@ public class Frame extends JFrame {
   }
 
   private void update() {
-    // centers the window
-    this.setLocationRelativeTo(null);
-
     this.repaint();
   }
 }
