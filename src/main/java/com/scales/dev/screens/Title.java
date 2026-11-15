@@ -18,8 +18,8 @@ public class Title extends Canvas {
     g.setColor(Color.WHITE);
     g.setFont(new Font("Arial", Font.BOLD, 24));
 
-    int titleWidth = g.getFontMetrics().stringWidth(Main.PROJECT_NAME);
-    g.drawString(Main.PROJECT_NAME, (this.getWidth() / 2) - (titleWidth / 2), 100);
+    int titleWidth = g.getFontMetrics().stringWidth(Main.FRAME.getTitle());
+    g.drawString(Main.FRAME.getTitle(), (this.getWidth() / 2) - (titleWidth / 2), 100);
 
     String subtitleText = "Press any key to start";
     int subtitleWidth = g.getFontMetrics().stringWidth(subtitleText);

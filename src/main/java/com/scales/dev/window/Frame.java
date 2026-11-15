@@ -13,8 +13,8 @@ import lombok.Getter;
 public class Frame extends JFrame {
   @Getter private final ArrayList<Canvas> canvases = new ArrayList<>();
 
-  public Frame() {
-    super(Main.PROJECT_NAME);
+  public Frame(String name) {
+    super(name);
 
     // otherwise it keeps running without a window, how crazy!
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
